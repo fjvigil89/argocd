@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: locust
+  name: metalib
   namespace: argocd
 spec:
   clusterResourceWhitelist:
@@ -16,15 +16,14 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: locust
+  name: guestbook
   namespace: argocd
 spec:
   source:
-    path: base/locust
+    path: overlay/productions/metalib
     repoURL: https://github.com/fjvigil89/argocd.git
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
-  project: locust
-
+  project: metalib

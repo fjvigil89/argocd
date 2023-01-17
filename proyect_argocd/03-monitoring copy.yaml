@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: metalib
+  name: monitoring
   namespace: argocd
 spec:
   clusterResourceWhitelist:
@@ -16,14 +16,30 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: monitoring
   namespace: argocd
 spec:
   source:
-    path: base/metalib
+    path: overlay/productions/monitoring/setup
     repoURL: https://github.com/fjvigil89/argocd.git
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
-  project: metalib
+  project: monitoring
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: argocd
+spec:
+  source:
+    path: overlay/productions/monitoring
+    repoURL: https://github.com/fjvigil89/argocd.git
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kube-system
+  project: monitoring
