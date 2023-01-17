@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-service
+  namespace: kafka
+  labels:
+    name: kafka
+  annotations:
+    metallb.universe.tf/address-pool: default
+spec:
+  ports:
+  - port: 9092
+    name: kafka-port
+    protocol: TCP
+  selector:
+    app: kafka
+    id: "0"
+  type: LoadBalancer
+
