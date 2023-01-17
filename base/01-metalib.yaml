@@ -20,7 +20,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    path: metalib
+    path: base/metalib
     repoURL: https://github.com/fjvigil89/argocd.git
     targetRevision: HEAD
   destination:
