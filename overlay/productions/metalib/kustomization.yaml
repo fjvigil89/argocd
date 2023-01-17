@@ -4,5 +4,4 @@ namespace: metallb-system
 
 resources:
   - github.com/metallb/metallb//manifests?ref=v0.10.2  
-  - ns.yaml
   - configmap.yaml

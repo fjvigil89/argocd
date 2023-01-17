@@ -2,6 +2,7 @@
 
 # This script is used to initialize the Argo CD server and the Argo CD CLI
 # It is used to create the initial admin user and to create the initial project
+
 echo "#############################################"
 echo "#######  Creating ArgoCD servers  #######"
 echo "#############################################"
